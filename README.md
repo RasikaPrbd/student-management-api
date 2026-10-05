@@ -1,58 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Student Management REST API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based REST API for managing students, courses, authentication, and user roles.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- User Registration
+- User Login and Logout
+- Laravel Sanctum Authentication
+- Role-Based Authorization
+- Admin Middleware
+- Student CRUD
+- Course CRUD
+- Student-Course Relationship
+- Student Search
+- Pagination
+- Request Validation
+- API Resources
+- Standard API Error Responses
+- Automated API Tests
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.3
+- Laravel 13
+- MySQL
+- Laravel Sanctum
+- PHPUnit
+- Postman
 
-## Learning Laravel
+## API Endpoints
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Authentication
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/register` | Register user |
+| POST | `/api/login` | Login user |
+| POST | `/api/logout` | Logout user |
+| GET | `/api/user` | Get logged-in user |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Students
 
-## Agentic Development
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/students` | Get all students |
+| POST | `/api/students` | Create student |
+| GET | `/api/students/{id}` | Get student |
+| PUT | `/api/students/{id}` | Update student |
+| DELETE | `/api/students/{id}` | Delete student |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Courses
 
-```bash
-composer require laravel/boost --dev
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/courses` | Get all courses |
+| POST | `/api/courses` | Create course |
+| GET | `/api/courses/{id}` | Get course |
+| GET | `/api/courses/{id}/students` | Get course students |
+| PUT | `/api/courses/{id}` | Update course |
+| DELETE | `/api/courses/{id}` | Delete course |
 
-php artisan boost:install
+## Authentication
+
+Protected API routes use Laravel Sanctum.
+
+Send the token with requests:
+
+```text
+Authorization: Bearer YOUR_TOKEN
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Roles
 
-## Contributing
+The API supports two roles:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- user
+- admin
 
-## Code of Conduct
+Only admins can delete students and courses.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Testing
 
-## Security Vulnerabilities
+Run all automated tests:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan test
+```
 
-## License
+## Installation
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Clone the repository:
+
+```bash
+git clone https://github.com/RasikaPrbd/student-management-api.git
+```
+
+Go to the project:
+
+```bash
+cd student-management-api
+```
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Create `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Generate application key:
+
+```bash
+php artisan key:generate
+```
+
+Configure your MySQL database in `.env`.
+
+Run migrations:
+
+```bash
+php artisan migrate
+```
+
+Start the server:
+
+```bash
+php artisan serve
+```
+
+API URL:
+
+```text
+http://127.0.0.1:8000/api
+```
+
+## Author
+
+Rasika Prabodha
+
+GitHub: https://github.com/RasikaPrbd
