@@ -1,0 +1,113 @@
+{
+  "info": {
+    "_collection_link": "https://go.postman.co/collection/58638298-c228dd9d-efab-4555-aead-6a702a7a38f0?source=collection_link",
+    "_exporter_id": "58638298",
+    "_postman_id": "c228dd9d-efab-4555-aead-6a702a7a38f0",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "name": "My Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "name": "Get data",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_0wr4}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\r\n    \"email\": \"rasika@gmail.com\",\r\n    \"password\": \"password12345\"\r\n}"
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "login"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/login"
+        }
+      },
+      "response": []
+    },
+    {
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "name": "Post data",
+      "request": {
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code.",
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ],
+          "raw": "postman-echo.com/post"
+        }
+      },
+      "response": []
+    }
+  ]
+}
